@@ -14,7 +14,7 @@ model Author {
   id        Int   @id @default(autoincrement())
   firstname String
   lastname  String
-  books Book[]
+  books AuthorsOnBooks[]
 }
 
 model Book {
@@ -22,7 +22,14 @@ model Book {
   title   String
   year    Int
   pages   Int
-  author  Author  @relation(fields: [authorId], references: [id])
-  authorId Int
+  authors  AuthorsOnBooks[]
 } 
 
+model AuthorsOnBooks {
+  author    Author @relation(fields: [authorId], references: [id])
+  authorId  Int
+  book      Book @relation(fields: [bookId], references: [id])
+  bookId    Int
+  assignedAt DateTime @default(now())
+  @@id([authorId, bookId])
+}
