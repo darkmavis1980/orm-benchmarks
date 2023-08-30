@@ -17,6 +17,8 @@ const main = async () => {
               ON Author.id = AuthorsOnBooks.authorId AND Book.id = AuthorsOnBooks.bookId`
   const [result] = await connection.query(sql);
   console.log(result);
+
+  return connection;
 }
 
 main();
