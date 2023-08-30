@@ -2,7 +2,7 @@ import { createConnection } from 'mysql2/promise';
 
 const main = async () => {
   const connection = await createConnection({
-    host: '192.168.0.36',
+    host: 'localhost',
     user: 'prisma',
     password: 'prisma',
     database: 'prisma',
